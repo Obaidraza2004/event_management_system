@@ -17,15 +17,12 @@ export default function ProtectedRoute({ adminOnly = false, children }) {
   if (loading) return <p>Loading...</p>;
 
   if (!user) {
-    // Not logged in, redirect to login
     return <Navigate to="/login" replace />;
   }
 
   if (adminOnly && user.email !== ADMIN_EMAIL) {
-    // Logged in but not admin — redirect user dashboard or login
     return <Navigate to="/login" replace />;
   }
 
-  // Authorized, render children (the dashboard)
   return children;
 }

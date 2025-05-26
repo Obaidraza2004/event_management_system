@@ -23,7 +23,6 @@ export default function EventForm({ user }) {
       return;
     }
 
-    // Upload image to Supabase Storage
     const filename = `${Date.now()}_${form.image.name}`;
     const filePath = `events/${filename}`;
 
@@ -36,12 +35,10 @@ export default function EventForm({ user }) {
       return;
     }
 
-    // Get public URL of the uploaded image
     const {
       data: { publicUrl },
     } = supabase.storage.from("event-images").getPublicUrl(filePath);
 
-    // Insert event data into Supabase table
     const { error: insertError } = await supabase.from("events").insert([
       {
         user_id: user.id,
@@ -58,7 +55,6 @@ export default function EventForm({ user }) {
       alert("Event submission failed: " + insertError.message);
     } else {
       alert("Event submitted for approval!");
-      // Optionally reset form
       setForm({
         title: "",
         description: "",

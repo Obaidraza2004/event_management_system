@@ -9,14 +9,12 @@ export default function UserDashboard() {
   const [events, setEvents] = useState([]);
   const navigate = useNavigate();
 
-  // Fetch logged-in user
   useEffect(() => {
     supabase.auth.getUser().then(({ data: { user } }) => {
       if (user) setUser(user);
     });
   }, []);
 
-  // Fetch events of this user
   const fetchEvents = async (userId) => {
     const { data, error } = await supabase
       .from("events")
@@ -31,7 +29,6 @@ export default function UserDashboard() {
     }
   };
 
-  // Fetch events when user is set and listen for changes
   useEffect(() => {
     if (user) {
       fetchEvents(user.id);
@@ -51,7 +48,6 @@ export default function UserDashboard() {
     }
   }, [user]);
 
-  // Handle Logout
   const handleLogout = async () => {
     await supabase.auth.signOut();
     navigate("/login");

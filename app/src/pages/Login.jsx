@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate, Link } from "react-router-dom"; // <-- Added Link here
+import { useNavigate, Link } from "react-router-dom"; 
 import { supabase } from "../supabase/client";
 import { ADMIN_EMAIL } from "../constants/admin";
 import "../style/Login.css";
@@ -19,7 +19,6 @@ export default function Login() {
       return;
     }
 
-    // Redirect based on email (admin or user)
     if (data.user.email === ADMIN_EMAIL) {
       navigate("/admin-dashboard");
     } else {

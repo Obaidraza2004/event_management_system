@@ -137,7 +137,6 @@ h2 {
     width: 100%;
   }
 }
-/* Style inputs inside forms (like EventForm) */
 form input,
 form select,
 form textarea {
@@ -158,7 +157,6 @@ form textarea:focus {
   outline: none;
 }
 
-/* Style form buttons if you want consistent style */
 form button {
   background-color: #667eea;
   color: white;
